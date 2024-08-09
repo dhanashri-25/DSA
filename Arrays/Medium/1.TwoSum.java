@@ -19,4 +19,4 @@ class Solution {
 // 1) el1=2 el2=7 put 2,0
 // 2) el1=7 el2=2 yes present so nums[0]=0 nums[1]=1 return [0,1]
 //tc=O(n)
-//sc=O(n)
+//sc=O(n)  
