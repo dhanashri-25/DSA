@@ -1,4 +1,3 @@
-package Graph;
 
 import java.util.*;
 
@@ -11,18 +10,18 @@ public class CycleInDirectedGraph {
     for (int i : adj.get(node)) {
       // when the node is not visited
       if (vis[i] == 0) {
-        if (dfscheck(i, adj, vis, pathvis)) {  // recursive DFS call
-          return true;  // cycle found
+        if (dfscheck(i, adj, vis, pathvis)) { // recursive DFS call
+          return true; // cycle found
         }
-      } 
+      }
       // if the node has been previously visited
       // and it's part of the current path
       else if (pathvis[i] == 1) {
-        return true;  // cycle detected
+        return true; // cycle detected
       }
     }
 
-    pathvis[node] = 0;  // backtrack, remove the current node from path
+    pathvis[node] = 0; // backtrack, remove the current node from path
     return false;
   }
 
@@ -34,11 +33,11 @@ public class CycleInDirectedGraph {
     for (int i = 0; i < V; i++) {
       if (vis[i] == 0) {
         if (dfscheck(i, adj, vis, pathvis)) {
-          return true;  // cycle found
+          return true; // cycle found
         }
       }
     }
-    return false;  // no cycle found
+    return false; // no cycle found
   }
 
   public static void main(String[] args) {
@@ -64,9 +63,9 @@ public class CycleInDirectedGraph {
     boolean ans = obj.isCyclic(V, adj);
 
     if (ans) {
-      System.out.println("True");  // cycle exists
+      System.out.println("True"); // cycle exists
     } else {
-      System.out.println("False");  // no cycle exists
+      System.out.println("False"); // no cycle exists
     }
   }
 }
