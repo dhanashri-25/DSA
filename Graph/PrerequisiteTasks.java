@@ -1,5 +1,4 @@
 import java.util.*;
-
 class PrerequisiteTasks {
   public boolean isPossible(int N, int P, int[][] prerequisites) {
     // Step 1: Build the adjacency list and indegree array
