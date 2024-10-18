@@ -1,3 +1,4 @@
+
 import java.util.*;
 
 class Node {
@@ -5,37 +6,33 @@ class Node {
   Node left;
   Node right;
 
-  Node(int val) {
-    data = val;
-    left = null;
-    right = null;
+  Node(int data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
   }
 }
 
 public class LevelOrderTraversal {
-
-  public static List<List<Integer>> levelOrder(Node root) {
+  public static List<List<Integer>> level(Node root) {
     List<List<Integer>> ans = new ArrayList<>();
-    if (root == null) return ans; // Added null check for root
-
+    if (root == null)
+      return ans;
     Queue<Node> q = new LinkedList<>();
     q.add(root);
-
     while (!q.isEmpty()) {
-      List<Integer> level = new ArrayList<>();
+      List<Integer> level = new ArrayList<>();// initialize new level for adding
       int size = q.size();
-
       for (int i = 0; i < size; i++) {
-        Node node = q.poll();
+        Node node = q.remove();
         level.add(node.data);
-
-        if (node.left != null) q.add(node.left);
-        if (node.right != null) q.add(node.right);
+        if (node.left != null)
+          q.add(node.left);
+        if (node.right != null)
+          q.add(node.right);
       }
-
       ans.add(level);
     }
-
     return ans;
   }
 
@@ -46,9 +43,10 @@ public class LevelOrderTraversal {
     root.right = new Node(3);
     root.left.left = new Node(4);
     root.left.right = new Node(5);
+    root.right.right=new Node(6);
 
     // Perform level-order traversal
-    List<List<Integer>> result = levelOrder(root);
+    List<List<Integer>> result = level(root);
 
     System.out.println("Level Order Traversal of Tree:");
 
@@ -61,4 +59,8 @@ public class LevelOrderTraversal {
     }
   }
 }
-
+// dry run
+// q=[1]
+// itr=1 level=[1] add 2 3 to queue q=[2,3] ans=[[1]]
+// itr=2 level=[2,3] q=[4,5,6] ans=[[1][2,3]]
+// itr=3 level=[4,5,6] q=[] ans=[[1],[2,3],[4,5,6]]
